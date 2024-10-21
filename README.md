@@ -12,7 +12,7 @@ Este proyecto implementa el algoritmo de Dijkstra para calcular la ruta más cor
 
 ### Uso
 
-1.  Al ejecutar el archivo Trabajo Grafos.py, se solicitarán tres entradas:
+1.  Al ejecutar el archivo Metodo Dijkstra Metro Santiago.py, se solicitarán tres entradas:
 	- Estación de origen: El nombre de la estación de inicio.
 	- Estación de destino: El nombre de la estación final.
 	- Criterio de búsqueda: "tiempo" para la ruta más rápida o "transbordos" para minimizar la cantidad de transbordos.
