@@ -19,16 +19,16 @@ def dijkstra_metro(grafo, origen, destino, criterio):
 
         # Relajar las aristas adyacentes
         for vecino, peso in grafo[estacion].items():
-            if vecino not in visitados:
+            if vecino not in visitados: # Si no ha sido visitado
                 if criterio == 'tiempo':
                     new_dist = dist[estacion] + peso  # Minimizar tiempo
 
                 elif criterio == 'transbordos':
-                    new_dist = dist[estacion] + 1  # Penalizar cada estacion (suponiendo transbordo en cada estacion)
+                    new_dist = dist[estacion] + 1  # Minimizar transbordos
 
                 # Actualizamos si encontramos una distancia mejor
-                if new_dist < dist[vecino]:
-                    dist[vecino] = new_dist
+                if new_dist < dist[vecino]: 
+                    dist[vecino] = new_dist 
                     prev[vecino] = estacion
                     if criterio == 'transbordos':
                         transbordos[vecino] = transbordos[estacion] + 1
@@ -36,9 +36,9 @@ def dijkstra_metro(grafo, origen, destino, criterio):
     # Reconstruccion del camino
     camino = []
     nodo_actual = destino
-    while nodo_actual is not None:
-        camino.insert(0, nodo_actual)
-        nodo_actual = prev[nodo_actual]
+    while nodo_actual is not None: # Mientras no lleguemos al origen
+        camino.insert(0, nodo_actual) # Insertar al principio
+        nodo_actual = prev[nodo_actual] # Mover al predecesor
 
     return dist, camino
 
@@ -213,5 +213,9 @@ distancias, camino = dijkstra_metro(grafo, origen, destino, criterio)
 # Mostrar resultados
 distancia_total = distancias[destino]
 print(f"Ruta desde {origen} hasta {destino}: {camino}")
-print(f"Tiempo estimado de viaje: {distancia_total} minutos")
+if criterio == 'tiempo':
+    print(f"Tiempo estimado de viaje: {distancia_total} minutos")
+elif criterio == 'transbordos':
+    print(f"Numero de transbordos: {distancia_total}")
+
 
